@@ -21,18 +21,23 @@ def recommend(movie):
 
 app = Flask(__name__)
 
-@app.route('/api', methods=[ 'POST' ])
+@app.route('/movie/predict', methods=[ 'POST' ])
 def make_predict():
-    #all kinds of error checking should go here
+    # all kinds of error checking should go here
     data = request.get_json(force=True)
     print(data)
-    #convert our json to a numpy array
-    # predict_request = [data['sl '],datal 'sw'],datal 'pl'], datal'pw']]
+    # convert our json to a numpy array
     request_movie_name = data['name']
-    #return our prediction
+    # return our prediction
     output = recommend(request_movie_name)
     print(output)
-    return jsonify(results=output)
+    return jsonify(output)
+
+@app.route('/movie/get', methods=[ 'GET' ])
+def get_movies():
+    # request_movie_name = data['name']
+    response = movies['title'].values.tolist()
+    return jsonify(response)
 
 if __name__ == '__main__' :
     app.run(port = 7780, debug = True)
