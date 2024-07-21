@@ -3,8 +3,8 @@ import pickle as pl
 import pandas as pd
 import requests as req
 
-similarity = pl.load(open('../model/similarity.pkl', 'rb'))
-movies_dict = pl.load(open('../model/movie_dict.pkl', 'rb'))
+similarity = pl.load(open('./model/similarity.pkl', 'rb'))
+movies_dict = pl.load(open('./model/movie_dict.pkl', 'rb'))
 movies = pd.DataFrame(movies_dict)
 st.title("Recommender System")
 
